@@ -21,7 +21,6 @@ function growTree(startX, startY, len, angle, branchWidth, color) {
 
     ctx.beginPath();
     ctx.save();
-    treesound.play();
     ctx.translate(startX, startY);
     ctx.rotate(angle * Math.PI/180);
     ctx.moveTo(0, 0);
@@ -51,6 +50,7 @@ function init() {
     var yPosition = event.clientY;
     var len = Math.random() * 120;
     // var angle = Math.random();
+    treesound.play();
     growTree(xPosition, yPosition, len, 0, 10, getColor());
   })
   window.addEventListener('resize', resizeCanvas, false);
