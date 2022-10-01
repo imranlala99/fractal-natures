@@ -1,21 +1,22 @@
-method below the code sample):
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
 </head>
 <body>
+    <h1>A tree grows</h1>
     <canvas id="my_canvas" width="1000" height="800"></canvas>
     <script>
     var myCanvas = document.getElementById("my_canvas");
     var ctx = myCanvas.getContext("2d");
-    function draw(startX, startY, len, angle) {
+    function draw(startX, startY, len, angle, divider) {
         ctx.beginPath();
         ctx.save();
 
         ctx.translate(startX, startY);
-        ctx.rotate(angle * Math.PI/180);
+        // console.log(divider);
+
+        ctx.rotate(angle * Math.PI/divider);
         ctx.moveTo(0, 0);
         ctx.lineTo(0, -len);
         ctx.stroke();
@@ -25,12 +26,30 @@ method below the code sample):
             return;
         }
 
-        draw(0, -len, len*0.8, -15);
-        draw(0, -len, len*0.8, +15);
+        draw(0, -len, len*0.8, -15, divider);
+        draw(0, -len, len*0.8, +15, divider);
 
         ctx.restore();
     }
-    draw(400, 600, 120, 0)       
+    let number = 20000;
+    
+    var interval = setInterval(()=> { 
+        console.log(number);
+
+        draw(400, 600, 120, 00, number) 
+        number -= 200
+        if (number <= 0) {
+            clearInterval(interval);
+            return;
+        }
+        ctx.clearRect(0, 0, ctx.width, ctx.height);
+        // console.log(number);
+    }, 1);
+
+    
+    
+
+
     </script>
 </body>
 </html>
