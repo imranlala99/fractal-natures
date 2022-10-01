@@ -2,6 +2,8 @@
 var myCanvas = document.getElementById("my_canvas");
 var ctx = myCanvas.getContext("2d");
 
+
+
 // function setup() {
 //     createCanvas(600, 600);
 //   }
@@ -12,13 +14,14 @@ var ctx = myCanvas.getContext("2d");
 
 function growTree(startX, startY, len, angle, branchWidth, color) {
     ctx.lineWidth = branchWidth;
-
-    ctx.beginPath();
-    ctx.save();
+    let treesound = new Audio('assets/leaves.m4a');
 
     ctx.strokeStyle = color;
     ctx.fillStyle = color;
 
+    ctx.beginPath();
+    ctx.save();
+    treesound.play();
     ctx.translate(startX, startY);
     ctx.rotate(angle * Math.PI/180);
     ctx.moveTo(0, 0);
