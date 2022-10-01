@@ -8,7 +8,9 @@ var ctx = myCanvas.getContext("2d");
 // function draw(){
 //     growTree(400, 600, 120, 0, 10)
 // }
-function draw(startX, startY, len, angle, branchWidth) {
+
+
+function growTree(startX, startY, len, angle, branchWidth) {
     ctx.lineWidth = branchWidth;
 
     ctx.beginPath();
@@ -25,10 +27,21 @@ function draw(startX, startY, len, angle, branchWidth) {
         return;
     }
 
-    draw(0, -len, len*0.8, angle-15, branchWidth*0.8);
-    draw(0, -len, len*0.8, angle+15, branchWidth*0.8);
+    growTree(0, -len, len*0.8, angle-15, branchWidth*0.8);
+    growTree(0, -len, len*0.8, angle+15, branchWidth*0.8);
 
     ctx.restore();
 }
 
-draw(400, 600, 120, 0, 10)
+
+window.addEventListener('load', init);
+
+function init() {
+  myCanvas.addEventListener('click', function(event) {
+    var xPosition = event.clientX;
+    var yPosition = event.clientY;
+    var len = Math.random() * 120;
+    // var angle = Math.random();
+    growTree(xPosition, yPosition, len, 0, 10);
+  })
+}
