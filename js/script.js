@@ -2,13 +2,13 @@
 var myCanvas = document.getElementById("my_canvas");
 var ctx = myCanvas.getContext("2d");
 
-function setup() {
-    createCanvas(600, 600);
-  }
-function draw(){
-    growTree(400, 600, 120, 0, 10)
-}
-function growTree(startX, startY, len, angle, branchWidth) {
+// function setup() {
+//     createCanvas(600, 600);
+//   }
+// function draw(){
+//     growTree(400, 600, 120, 0, 10)
+// }
+function draw(startX, startY, len, angle, branchWidth) {
     ctx.lineWidth = branchWidth;
 
     ctx.beginPath();
@@ -30,3 +30,5 @@ function growTree(startX, startY, len, angle, branchWidth) {
 
     ctx.restore();
 }
+
+draw(400, 600, 120, 0, 10)
