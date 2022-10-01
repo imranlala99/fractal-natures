@@ -1,7 +1,7 @@
 //script goes here
 var myCanvas = document.getElementById("my_canvas");
 var ctx = myCanvas.getContext("2d");
-let animFrame;
+// let animFrame;
 
 
 // function setup() {
@@ -27,7 +27,9 @@ function init() {
     // Couple of extra trees, enable if you wish
     // branches.push(new Branch(-400, 0, 160 + Math.random() * 40, 0, 0.01 + Math.random() / 30, 20));
     // branches.push(new Branch(400, 0, 160 + Math.random() * 40, 0, 0.01 + Math.random() / 30, 20));
-    growTree(400, 600, 60, 0, 10)
+    
+    window.requestAnimationFrame(growTree(400, 600, 60, 0, 10));
+
 }
 
 init();
@@ -62,7 +64,7 @@ init();
 
 
 function growTree(startX, startY, len, angle, branchWidth) {
-    ctx.save();
+    // ctx.save();
     ctx.lineWidth = branchWidth;
 
     ctx.beginPath();
@@ -73,6 +75,7 @@ function growTree(startX, startY, len, angle, branchWidth) {
     ctx.moveTo(0, 0);
     ctx.lineTo(0, -len);
     ctx.stroke();
+    ctx.save();
 
     if(len < 10) {
         ctx.restore();
@@ -81,10 +84,10 @@ function growTree(startX, startY, len, angle, branchWidth) {
 
     // growTree(0, -len, len*0.8, angle-15, branchWidth*0.8);
     // growTree(0, -len, len*0.8, angle+15, branchWidth*0.8);
-    animFrame = requestAnimationFrame(growTree(0, -len, len*0.8, angle-15, branchWidth*0.8));
-    animFrame = requestAnimationFrame(growTree(0, -len, len*0.8, angle+15, branchWidth*0.8));
+    window.requestAnimationFrame(growTree(0, -len, len*0.8, angle-15, branchWidth*0.8));
+    window.requestAnimationFrame(growTree(0, -len, len*0.8, angle+15, branchWidth*0.8));
 
-    // ctx.restore();
+    ctx.restore();
     // animFrame=   requestAnimationFrame(growTree(0, -len, len*0.8, angle+15, branchWidth*0.8));
 
 }
