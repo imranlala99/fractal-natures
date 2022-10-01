@@ -1,6 +1,8 @@
 //script goes here
 var myCanvas = document.getElementById("my_canvas");
 var ctx = myCanvas.getContext("2d");
+var treesound = new Audio('assets/leaves.m4a');
+
 
 // function setup() {
 //     createCanvas(600, 600);
@@ -15,7 +17,7 @@ function growTree(startX, startY, len, angle, branchWidth) {
 
     ctx.beginPath();
     ctx.save();
-
+    treesound.play();
     ctx.translate(startX, startY);
     ctx.rotate(angle * Math.PI/180);
     ctx.moveTo(0, 0);
