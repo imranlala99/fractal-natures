@@ -28,7 +28,7 @@ function init() {
     // branches.push(new Branch(-400, 0, 160 + Math.random() * 40, 0, 0.01 + Math.random() / 30, 20));
     // branches.push(new Branch(400, 0, 160 + Math.random() * 40, 0, 0.01 + Math.random() / 30, 20));
     
-    window.requestAnimationFrame(growTree(400, 600, 60, 0, 10));
+    window.requestAnimationFrame(growTreeTimeout);
 
 }
 
@@ -61,9 +61,23 @@ init();
 //     animFrame = requestAnimationFrame(loop);
 //   }
 // }
+// count 0
+// count 1 ...
+// count 20
+let len = 120
+let angle = 15
+let branchWidth = 10
 
+function growTreeTimeout(timeout) {
+    growTree(0, -len, len*0.8, angle-15, branchWidth*0.8, timeout)
+    // growTree(0, -len, len*0.8, angle+15, branchWidth*0.8, timeout)
+}
 
-function growTree(startX, startY, len, angle, branchWidth) {
+function growTree(startX, startY, len, angle, branchWidth, timeout) {
+    console.log(timeout)
+    if (timeout <= 0) {
+        return 
+    } 
     // ctx.save();
     ctx.lineWidth = branchWidth;
 
@@ -82,15 +96,16 @@ function growTree(startX, startY, len, angle, branchWidth) {
         return;
     }
 
-    // growTree(0, -len, len*0.8, angle-15, branchWidth*0.8);
-    // growTree(0, -len, len*0.8, angle+15, branchWidth*0.8);
-    window.requestAnimationFrame(growTree(0, -len, len*0.8, angle-15, branchWidth*0.8));
-    window.requestAnimationFrame(growTree(0, -len, len*0.8, angle+15, branchWidth*0.8));
+    growTree(0, -len, len*0.8, angle-15, branchWidth*0.8, timeout-1);
+    growTree(0, -len, len*0.8, angle+15, branchWidth*0.8, timeout-1);
+   
+    // window.requestAnimationFrame();
 
     ctx.restore();
     // animFrame=   requestAnimationFrame(growTree(0, -len, len*0.8, angle+15, branchWidth*0.8));
 
 }
+
 
 // while loop
 
