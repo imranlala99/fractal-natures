@@ -1,6 +1,7 @@
 //script goes here
 var myCanvas = document.getElementById("my_canvas");
 var ctx = myCanvas.getContext("2d");
+var treesound = new Audio('assets/leaves.mp3');
 
 
 
@@ -14,7 +15,6 @@ var ctx = myCanvas.getContext("2d");
 
 function growTree(startX, startY, len, angle, branchWidth) {
     ctx.lineWidth = branchWidth;
-    let treesound = new Audio('assets/leaves.m4a');
 
     ctx.beginPath();
     ctx.save();
