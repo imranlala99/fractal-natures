@@ -16,7 +16,7 @@ function init() {
     // myCanvas.width = window.innerWidth;
     // myCanvas.height = window.innerHeight;
     // ctx.strokeStyle = '#532';
-    cancelAnimationFrame(animFrame);
+    // cancelAnimationFrame(animFrame);
     // ctx.clearRect(0, 0, myCanvas.width, myCanvas.height);
 
     // branches.splice(0, branches.length);
